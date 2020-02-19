@@ -89,22 +89,20 @@
       const Bookmarks = ({ bookmarks, destroy, match }) => {
         const filter = match.params.filter;
         let booksFiltered = bookmarks;
-        
-        filter ? booksFiltered = booksFiltered.filter( bookmark => bookmark.category === filter ):''
+        filter ? booksFiltered = booksFiltered.filter( bookmark => bookmark.category === filter ): ""
         
         return (
           <ul className="bookmarks">
-
-            { booksFiltered.map( (bookmark) => {
-                return 
-                  <li key={bookmark.id}>
-                    <h2><a href={bookmark.url} title={bookmark.url + ' | ' + bookmark.category}>{bookmark.url}</a></h2>
-                    <div>
-                      <button onClick={() => destroy(bookmark)}>Destroy</button>
-                    </div>
-                  </li>
-            })}
-
+            {
+              booksFiltered.map( (bookmark) => {
+                return <li key={bookmark.id}>
+                          <h2><a href={bookmark.url} title={bookmark.url + ' | ' + bookmark.category}>{bookmark.url}</a></h2>
+                          <div>
+                            <button onClick={() => destroy(bookmark)}>Destroy</button>
+                          </div>
+                       </li>
+              })
+            }
           </ul>
         )
       }
